@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('allmenu', $mymenu);
         if(env('APP_ENV') !== 'local')
         {
-            $url->forceSchema('https');
+            $url->forceScheme('https');
         }
     }
 }
