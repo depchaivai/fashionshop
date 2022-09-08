@@ -64,7 +64,7 @@ class Product_controller extends Controller
         }
         $file = $request->file('productIMG');
         $filename= date('YmdHi').$file->getClientOriginalName();
-        $file-> move(public_path('public/images'), $filename);
+        $file-> move(public_path('images'), $filename);
         $newPI = new Product;
         $newPI->cate = $request->cate;
         $newPI->name = $request->name;
@@ -119,7 +119,7 @@ class Product_controller extends Controller
             if(in_array($request->file('productIMG')->extension(),$extensions)){
                 $file = $request->file('productIMG');
                 $filename= date('YmdHi').$file->getClientOriginalName();
-                $file-> move(public_path('public/images'), $filename);
+                $file-> move(public_path('images'), $filename);
                 $editp->image = $filename;
             }
             
