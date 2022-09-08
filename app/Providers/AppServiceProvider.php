@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Cate;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+use Illuminate\Routing\UrlGenerator;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -22,9 +23,13 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(UrlGenerator $url)
     {
         $mymenu = Cate::all();
         View::share('allmenu', $mymenu);
+        if(env('APP_ENV') !== 'local')
+        {
+            $url->forceSchema('https');
+        }
     }
 }
